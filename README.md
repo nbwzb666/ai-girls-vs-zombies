@@ -8,8 +8,10 @@
 
 ## 怎么玩
 
+**在线直接玩**：[https://nbwzb666.github.io/ai-girls-vs-zombies/](https://nbwzb666.github.io/ai-girls-vs-zombies/)（已发布，可直接分享给别人）
+
 **本地**：双击 `game/index.html`（推荐 Chrome/Edge）。  
-**在线（发布后）**：GitHub Pages 链接（见下文"发布到 GitHub"）。
+**快速演示**：在线/本地地址后加 `?lvl=AIGirls1&demo=1` 可看自动种植+自动放大招的演示。
 
 - 5 行 × 9 列服务器草坪，僵尸从右侧按波次进攻
 - 资源是 **Token**：天上会掉，吃白饭大肥鱼会产
@@ -57,14 +59,9 @@ game/
 
 **详细操作见 [docs/改东西手册.md](docs/改东西手册.md)**——加角色/加僵尸/加关卡/改数值/换形象/换地图，每件事都有步骤有例子。
 
-## 发布到 GitHub（明早 30 秒）
+## 发布到 GitHub（✅ 已完成，此节留档）
 
-本仓库已 commit 完毕，remote 已配置为 `git@github.com:nbwzb666/ai-girls-vs-zombies.git`：
-
-1. 打开 https://github.com/new → Repository name 填 `ai-girls-vs-zombies` → Create（不要勾选任何初始化选项）
-2. 在本目录执行：`git push -u origin master`
-3. 仓库页 Settings → Pages → Source 选 `Deploy from a branch` → Branch 选 `master` + `/game` 目录 → Save
-4. 1 分钟后访问 `https://nbwzb666.github.io/ai-girls-vs-zombies/` 即可在线玩
+仓库已发布：[github.com/nbwzb666/ai-girls-vs-zombies](https://github.com/nbwzb666/ai-girls-vs-zombies)，GitHub Pages 已开启（根目录跳转页 → game/）。以后更新代码后执行 `git add -A && git commit -m "说明" && git push` 即可，Pages 约 1 分钟后自动更新。
 
 ## 更多文档
 
