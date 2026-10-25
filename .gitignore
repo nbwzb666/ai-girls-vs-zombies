@@ -2,3 +2,4 @@ pvz-travel-src/
 .test/
 __pycache__/
 *.pyc
+pvz-assets-src/
