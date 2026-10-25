@@ -96,6 +96,26 @@ NextLevel = function (lvl = oS.Lvl) {
   }, 1000);
 })();
 
+/* ---------- 音乐替换：森林曲 → 原创白天草坪 BGM（ai-bgm.js 合成器） ---------- */
+(function () {
+  /* 包装引擎音乐函数：名为 AI_BGM_Day 时启停合成器，其他照旧 */
+  let _PlayMusic = PlayMusic, _StopMusic = StopMusic, _NewMusic = NewMusic;
+  window.PlayMusic = function (name) {
+    if (name === "AI_BGM_Day") { try { aiBGM.start(); } catch (e) {} return; }
+    try { aiBGM.stop(); } catch (e) {}
+    return _PlayMusic(name);
+  };
+  window.StopMusic = function (name) {
+    try { aiBGM.stop(); } catch (e) {}
+    return _StopMusic(name);
+  };
+  window.NewMusic = function (name) {
+    if (name === "AI_BGM_Day") return;
+    try { aiBGM.stop(); } catch (e) {}
+    return _NewMusic(name);
+  };
+})();
+
 /* ---------- 明日待办（夜间标注，不影响运行） ----------
  * [ ] 阳光图标/文案 → token（图片替换 images/interface/ 下阳光资源 + 语言文件）
  * [ ] 割草机 → 防火墙（图片+文案）

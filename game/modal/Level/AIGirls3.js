@@ -13,9 +13,10 @@ oS.Init({
   CanSelectCard: 0,
   SunNum: 250,
   LevelName: "服务器机房 1-3 正在安装更新 99%",
+  backgroundImage: "images/interface/DayLawn.png",
   LvlEName: 99,
-  LoadMusic: "Bgm_Forest_Ready",
-  StartGameMusic: "Bgm_Forest_Fight"
+  LoadMusic: "AI_BGM_Day",
+  StartGameMusic: "AI_BGM_Day"
 }, {
   AZ: [[oZombie, 5, 1], [oConeheadZombie, 4, 1], [oLoadingZombie, 2, 2],
        [oRouterZombie, 3, 3], [oHallucinationZombie, 2, 4], [oPopupAdZombie, 1, 5],

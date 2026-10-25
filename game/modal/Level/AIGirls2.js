@@ -12,9 +12,10 @@ oS.Init({
   CanSelectCard: 0,
   SunNum: 200,
   LevelName: "服务器草坪 1-2 请求洪流",
+  backgroundImage: "images/interface/DayLawn.png",
   LvlEName: 99,
-  LoadMusic: "Bgm_Forest_Ready",
-  StartGameMusic: "Bgm_Forest_Fight"
+  LoadMusic: "AI_BGM_Day",
+  StartGameMusic: "AI_BGM_Day"
 }, {
   AZ: [[oZombie, 5, 1], [oConeheadZombie, 4, 2], [oRouterZombie, 3, 3],
        [oHallucinationZombie, 2, 4], [oPopupAdZombie, 1, 6], [oBucketheadZombie, 2, 7]],
