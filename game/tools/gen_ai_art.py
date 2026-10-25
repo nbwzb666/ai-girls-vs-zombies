@@ -23,9 +23,30 @@ from PIL import Image, ImageDraw, ImageFilter
 
 ROOT = os.path.join(os.path.dirname(__file__), "..", "images", "AIGirls")
 
+
 # ---------------------------------------------------------------- 基础工具
+def apply_outline(img, width=2, color=(58, 44, 40, 255)):
+    """PVZ 式粗描边：alpha 扩张生成描边层（统一卡通风格的关键）"""
+    from PIL import ImageFilter, ImageChops
+    a = img.split()[3]
+    expanded = a.filter(ImageFilter.MaxFilter(width * 2 + 1))
+    full = Image.new("L", img.size, 255)
+    diff = ImageChops.subtract(expanded, a)
+    solid = Image.new("RGBA", img.size, color)
+    solid.putalpha(diff)
+    return Image.alpha_composite(solid, img)
+
+def boost_saturation(img, k=1.22):
+    """提高饱和度，更接近 PVZ 明快配色"""
+    from PIL import ImageEnhance
+    hsv = img.convert("HSV")
+    h, s, v = hsv.split()
+    s = ImageEnhance.Contrast(s).enhance(k)
+    return Image.merge("HSV", (h, s, v)).convert("RGBA")
+
 def canvas(w, h):
     return Image.new("RGBA", (w, h), (0, 0, 0, 0))
+
 
 def lerp(a, b, t):
     return tuple(int(a[i] + (b[i] - a[i]) * t) for i in range(len(a)))
@@ -216,7 +237,7 @@ class Chibi:
         self.star(cx, cy, r, color)
 
     def out(self):
-        return self.im
+        return boost_saturation(apply_outline(self.im, 2), 1.22)
 
 # ---------------------------------------------------------------- 角色绘制配置
 SKIN = (255, 232, 214, 255)

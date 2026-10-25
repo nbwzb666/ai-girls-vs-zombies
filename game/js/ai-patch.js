@@ -116,6 +116,24 @@ NextLevel = function (lvl = oS.Lvl) {
   };
 })();
 
+/* ---------- 调试模式：?debug=grid 输出引擎真实格子坐标 ---------- */
+(function () {
+  if (!/[?&]debug=grid/.test(location.search)) return;
+  let t = setInterval(() => {
+    if (typeof GetX === "function" && typeof GetY === "function") {
+      clearInterval(t);
+      let xs = [], ys = [];
+      for (let c = -2; c <= 12; c++) { try { xs.push(c + ":" + GetX(c)); } catch (e) {} }
+      for (let r = 0; r <= 6; r++) { try { ys.push(r + ":" + GetY(r)); } catch (e) {} }
+      let div = document.createElement("div");
+      div.id = "aiDebugGrid";
+      div.textContent = "GRID_X[" + xs.join(",") + "] GRID_Y[" + ys.join(",") + "]";
+      div.style.cssText = "position:fixed;left:0;top:0;z-index:99999;background:#000;color:#0f0;font-size:14px;";
+      document.body.appendChild(div);
+    }
+  }, 500);
+})();
+
 /* ---------- 明日待办（夜间标注，不影响运行） ----------
  * [ ] 阳光图标/文案 → token（图片替换 images/interface/ 下阳光资源 + 语言文件）
  * [ ] 割草机 → 防火墙（图片+文案）
